@@ -1,0 +1,10 @@
+export const SET_LOADING = 'SET_LOADING'
+
+export const SAVE_USER_INFO = 'SAVE_USER_INFO'
+
+// app reducer
+export const TOGGLE_SIDE_BAR = 'TOGGLE_SIDE_BAR'
+
+export const CHANGE_PRACTICE_TYPE = 'CHANGE_PRACTICE_TYPE'
+
+export const INIT_PREVIEW_DOC = 'INIT_PREVIEW_DOC'
