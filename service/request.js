@@ -24,7 +24,7 @@ class Request {
       })
     } else {
       request = axios.create({
-        timeout: 50000
+        timeout: 5000
       })
     }
 
@@ -41,9 +41,7 @@ class Request {
     //   // 让每个请求携带token-- ['X-Token']为自定义key 请根据实际情况自行修改
     //   config.headers['X-Token'] = getToken()
     // }
-	  console.log('hello api')
     const token = apiInfo.access_token
-	  console.log(token)
     if (token) {
       config.params.access_token = token
       config.data = config.data || {}

@@ -15,11 +15,13 @@ const Editor = dynamic(
 )
 
 class Article extends React.Component {
-	static async getInitialProps ({req}) {
-		console.log('??????????')
-		console.log(req.url)
-		const queryStr = (req.url || '').split('?')[1];
-		const { articleId } = queryStr;
+	static async getInitialProps ({req, query: { id } }) {
+		// const queryStr = (req.url || '').split('?')[1];
+		// const { articleId } = queryStr;
+
+
+		console.log('id:', id)
+
 		const e = {
 			access_token: '96a1c0fd4c969d51cf077d3944dcbe3c',
 			enterpriseId: '948467577997365248',
@@ -53,7 +55,7 @@ class Article extends React.Component {
 				content: '',
 				create_time: '',
 				creator_name: '',
-				test_props: 'This is a test for props'
+				ssr_rend_wrong: 'This is a test for props'
 			}
 		})
 		// console.log(payload)
@@ -71,7 +73,6 @@ class Article extends React.Component {
 	}
 
 	componentDidMount = () => {
-		console.log(this.props.test_props)
 		const e = {
 			access_token: '96a1c0fd4c969d51cf077d3944dcbe3c',
 			enterpriseId: '948467577997365248',
@@ -100,7 +101,10 @@ class Article extends React.Component {
 		// 	})
 		// 	this.saveProgress(url)
 		// }
-		// this.getArticleDetail('1789887346808852480')
+		if(this.props.ssr_rend_wrong) {
+			this.getArticleDetail('1789887346808852480')
+		}
+		//
 	}
 	saveProgress = url => {
 		let data = {
