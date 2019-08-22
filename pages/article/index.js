@@ -49,7 +49,7 @@ class Article extends React.Component {
 			}
 		}).catch(err => {
 			return {
-				title: '',
+				title: '服务器出问题了，需要你前端自己去拉取数据了',
 				content: '',
 				create_time: '',
 				creator_name: '',
@@ -145,7 +145,7 @@ class Article extends React.Component {
 
 	render () {
 		let {content, create_time, creator_name, title} = this.props
-		if (!content) return null
+		// if (!content) return null
 		return (
 			<div className="article-container">
 				<div className="article-top">
