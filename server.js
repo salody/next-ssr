@@ -4,7 +4,8 @@ const next = require('next')
 const cacheableResponse = require('cacheable-response')
 
 const port = parseInt(process.env.PORT, 10) || 50001
-const dev = process.env.NODE_ENV !== 'production'
+// const dev = process.env.NODE_ENV !== 'production'
+const dev = false
 const app = next({ dev })
 const handle = app.getRequestHandler()
 
