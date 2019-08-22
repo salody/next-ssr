@@ -1,6 +1,6 @@
 const API = {
-	// ENTERPRISE: 'https://d2enterpriseapi-i.coolcollege.cn',
-	ENTERPRISE: 'https://d2enterpriseapi.coolcollege.cn',
+	ENTERPRISE: 'https://d2enterpriseapi-i.coolcollege.cn',
+	// ENTERPRISE: 'https://d2enterpriseapi.coolcollege.cn',
 	PLATFORM: 'https://d2platformapi.coolcollege.cn'
 }
 
