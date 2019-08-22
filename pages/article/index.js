@@ -36,11 +36,11 @@ class Article extends React.Component {
 
 		let url = CONFIG.API.getArticleDetail({articleId: '1789887346808852480'})
 
-		console.log('url: ', url)
+		// console.log('url: ', url)
 
 		const payload = await request.get({url}).then(res => {
 			let {name, create_time, creator_name, content_json} = res.data
-			console.log('inner', res.data)
+			// console.log('inner', res.data)
 			return {
 				title: name,
 				content: content_json,
@@ -56,7 +56,7 @@ class Article extends React.Component {
 				test_props: 'This is a test for props'
 			}
 		})
-		console.log(payload)
+		// console.log(payload)
 		return payload
 	}
 
