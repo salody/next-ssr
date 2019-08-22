@@ -15,28 +15,50 @@ const Editor = dynamic(
 )
 
 class Article extends React.Component {
-	// static async getInitialProps ({req}) {
-	// 	console.log('??????????')
-	// 	const e = {
-	// 		access_token: 'c960e8bfae33e4fd2e28524810690ce1',
-	// 		enterpriseId: '948467577997365248',
-	// 		userId: '1789916475256082432',
-	// 		watermarks: [],
-	// 		name: 'ss',
-	// 		avatar: 'https://static.dingtalk.com/media/lADOjM5cK80C7s0C6g_746_750.jpg',
-	// 		position: '职位职位',
-	// 		jobnumber: '00011',
-	// 		language: 'zh_TW'
-	// 	}
-	//
-	// 	CONFIG.API.initApi(e)
-	// 	return {
-	// 		title: '',
-	// 		content: '',
-	// 		create_time: '',
-	// 		creator_name: ''
-	// 	}
-	// }
+	static async getInitialProps ({req}) {
+		console.log('??????????')
+		console.log(req.url)
+		const queryStr = (req.url || '').split('?')[1];
+		const { articleId } = queryStr;
+		const e = {
+			access_token: '96a1c0fd4c969d51cf077d3944dcbe3c',
+			enterpriseId: '948467577997365248',
+			userId: '950311681215565824',
+			watermarks: [],
+			name: 'ss',
+			avatar: 'https://static.dingtalk.com/media/lADOjM5cK80C7s0C6g_746_750.jpg',
+			position: '职位职位',
+			jobnumber: '00011',
+			language: 'zh_TW'
+		}
+
+		CONFIG.API.initApi(e)
+
+		let url = CONFIG.API.getArticleDetail({articleId: '1789887346808852480'})
+
+		console.log('url: ', url)
+
+		const payload = await request.get({url}).then(res => {
+			let {name, create_time, creator_name, content_json} = res.data
+			console.log('inner', res.data)
+			return {
+				title: name,
+				content: content_json,
+				create_time: formatDate(create_time, 'yyyy-MM-dd hh:mm'),
+				creator_name
+			}
+		}).catch(err => {
+			return {
+				title: '',
+				content: '',
+				create_time: '',
+				creator_name: '',
+				test_props: 'This is a test for props'
+			}
+		})
+		console.log(payload)
+		return payload
+	}
 
 	constructor (props) {
 		super(props)
@@ -49,10 +71,11 @@ class Article extends React.Component {
 	}
 
 	componentDidMount = () => {
+		console.log(this.props.test_props)
 		const e = {
-			access_token: '9ac1c1f27c4179862f50b6c0b570584c',
-			enterpriseId: '936499552989614080',
-			userId: '1789916475256082432',
+			access_token: '96a1c0fd4c969d51cf077d3944dcbe3c',
+			enterpriseId: '948467577997365248',
+			userId: '950311681215565824',
 			watermarks: [],
 			name: 'ss',
 			avatar: 'https://static.dingtalk.com/media/lADOjM5cK80C7s0C6g_746_750.jpg',
@@ -77,7 +100,7 @@ class Article extends React.Component {
 		// 	})
 		// 	this.saveProgress(url)
 		// }
-		this.getArticleDetail('1790775950917636096')
+		// this.getArticleDetail('1789887346808852480')
 	}
 	saveProgress = url => {
 		let data = {
@@ -121,7 +144,7 @@ class Article extends React.Component {
 	}
 
 	render () {
-		let {content, create_time, creator_name, title} = this.state
+		let {content, create_time, creator_name, title} = this.props
 		if (!content) return null
 		return (
 			<div className="article-container">

@@ -6,6 +6,7 @@ import exam from './exam'
 import landingInfo from './landingInfo'
 import practice from './practice'
 import previewDoc from './previewDoc'
+import article from './article'
 
 const rootReducer = combineReducers({
   userInfo,
@@ -13,7 +14,8 @@ const rootReducer = combineReducers({
   exam,
   landingInfo,
   practice,
-  previewDoc
+  previewDoc,
+	article
 })
 
 export default rootReducer

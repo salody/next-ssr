@@ -1,5 +1,5 @@
 const API = {
-	ENTERPRISE: 'https://tenterpriseapi.coolcollege.cn',
+	ENTERPRISE: 'https://d2enterpriseapi.coolcollege.cn',
 	PLATFORM: 'https://d2platformapi.coolcollege.cn'
 }
 
